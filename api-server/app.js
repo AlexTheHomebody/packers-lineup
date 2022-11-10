@@ -16,6 +16,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/test', (req, res)=>{
+    res.send('Its working!')
+})
+
 app.get('/', (req, res)=> {
     client.query(`SELECT * FROM players`)
     .then(result =>{
@@ -25,6 +29,10 @@ app.get('/', (req, res)=> {
         res.status(500).send(e)
     })
 });
+
+app.get('/:id', (req, res)=>{
+    client.query
+})
 
 
 
