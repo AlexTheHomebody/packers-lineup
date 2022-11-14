@@ -1,6 +1,6 @@
 module.exports = {
     dev:{
-        connectionString: 'postgresql://postgres:docker@127.0.0.1:5432/packers_db',
+        connectionString: 'postgres://packers_db_user:1olb4CRYYvEbKxok8RiTE0yKILcOsYhB@dpg-cdmkjk02i3mqrp8ktgm0-a.frankfurt-postgres.render.com/packers_db?ssl=true',
         port: '9999'
     },
     production:{

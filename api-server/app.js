@@ -60,15 +60,15 @@ app.post('/players', (req, res)=>{
     let weight = newPlayer. weight;
     let experience = newPlayer.experience;
     let college = newPlayer.college;
+    var values = [full_name, jersey_num, position, height, weight, experience, college] 
     client.query(`INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) 
-    VALUES('${full_name}', ${jersey_num}, '${position}', ${height}, ${weight}, '${experience}', '${college}') RETURNING *`)
+    VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *`, values)
     .then(result => {
         res.status(201).send(result.rows);
     })
     .catch(e=>{
         console.error(e.stack);
     })
-
 })
 //ADD A PLAYER
 app.patch('/players/:id', (req, res)=>{
@@ -82,7 +82,7 @@ app.patch('/players/:id', (req, res)=>{
     let college = newPlayer.college || '';
     async function fixingPlayer(){
         try{
-            const resutl = await client.query(`UPDATE players SET 
+            const result = await client.query(`UPDATE players SET 
             full_name = COALESCE(NULLIF('${full_name}', ''), full_name), 
             jersey_num = COALESCE(NULLIF(${jersey_num}, -1), jersey_num), 
             position = COALESCE(NULLIF('${position}', ''), position), 

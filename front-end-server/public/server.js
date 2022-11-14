@@ -1,36 +1,65 @@
-const playersList = document.getElementById('players');
+const playersList = document.getElementById('results');
+const submitButton = document.getElementById('text-button');
+
 
 const base_url = 'https://packers-api.onrender.com/'
+
 
 fetch(base_url)
 .then(response => response.json())
 .then(players => {
     players.forEach(player => {
-        const playerName = document.createElement('div');
-        const playerJN = document.createElement('li');
-        const playerPosition = document.createElement('li');
-        const playerHeight = document.createElement('li');
-        const playerWeight = document.createElement('li');
-        const playerExperience = document.createElement('li');
-        const playerCollege = document.createElement('li');
+        const playerCard = document.createElement('span');
+        const deletePlayer = document.createElement('button');
+        const editPlayer = document.createElement('button');
+        const playerInfo = document.createElement('div');
+        const playerName = document.createElement('h2');
+        const playerJN = document.createElement('ul');
+        const playerPosition = document.createElement('ul');
+        const playerHeight = document.createElement('ul');
+        const playerWeight = document.createElement('ul');
+        const playerExperience = document.createElement('ul');
+        const playerCollege = document.createElement('ul');
         
         playerName.innerText = player.full_name;
-        playerJN.innerText = player.jersey_num;
-        playerPosition.innerText = player.position;
-        playerHeight.innerText = player.height;
-        playerWeight.innerText = player.weight;
-        playerExperience.innerText = player.experience;
-        playerCollege.innerText = player.college;
+        playerJN.innerText = 'Jersey Number: ' + player.jersey_num;
+        playerPosition.innerText = 'Position: ' + player.position;
+        playerHeight.innerText = 'Height: ' + player.height +'"';
+        playerWeight.innerText = 'Weight: ' + player.weight + 'lbs';
+        playerExperience.innerText = 'Experience: ' + player.experience;
+        playerCollege.innerText = 'College: ' + player.college;
+        editPlayer.innerText = 'Edit';
+        deletePlayer.innerText = 'Delete';
         
+        playerCard.append(playerName);
+        playerCard.append(playerInfo);
+        playerInfo.append(playerJN);
+        playerInfo.append(playerPosition);
+        playerInfo.append(playerHeight);
+        playerInfo.append(playerWeight);
+        playerInfo.append(playerExperience);
+        playerInfo.append(playerCollege);
+        playerCard.append(deletePlayer);
+        playerCard.append(editPlayer);
+        playersList.append(playerCard);
+        playerCard.classList.add('card');
+        playerName.classList.add('full-name');
+        playerInfo.classList.add('info');
         
-        playersList.append(playerName);
-        playerName.append(playerJN);
-        playerName.append(playerPosition);
-        playerName.append(playerHeight);
-        playerName.append(playerWeight);
-        playerName.append(playerExperience);
-        playerName.append(playerCollege);
-        playerName.classList.add('card');
-        
+        deletePlayer.addEventListener('click', function(){
+            console.log(player.player_id);
+            fetch(base_url + 'players/' + player.player_id,
+            { method: 'DELETE' })
+            .then(playerCard.remove())
+        })
+
+        // editPlayer.addEventListener('click', function(){
+        //     console.log(player.weight);
+        // })
+
     });
 })
+
+
+
+

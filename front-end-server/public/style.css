@@ -1,11 +1,39 @@
-.card {
-    width: 170px;
-    height: 200px;
-    border: 1px solid black;
+body{
+    background-position: center center;
+    background-color: rgb(24,48,40);
+}
+#header{
+    text-align: center;
+    text-decoration: underline;
+    /* font-style: italic; */
+    font-size: x-large;
+    color: white;
+    -webkit-text-stroke: .25px rgb(255,215,0);
+}
+#get_player{
+    text-align: center;
+}
+.card{
+    border: 20px solid rgb(255,215,0);
+    width: 250px;
+    height: 280px;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 40px;
+    padding: 20px;  
+}
+#results{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 0;
-    margin: 0;
 
+}
+.full-name{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.info{
+    font-size: large;
 }
