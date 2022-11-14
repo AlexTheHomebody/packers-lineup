@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS players;
 
 CREATE TABLE players(
   player_id SERIAL PRIMARY KEY,
+  imgURL text, 
   full_name text,
   jersey_num INTEGER,
   position VARCHAR(10),

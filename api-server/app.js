@@ -30,9 +30,22 @@ app.get('/', (req, res)=> {
     })
 });
 
-app.get('/:id', (req, res)=>{
-    client.query
-})
+app.get('/:id', (req, res)=> {
+    async function getPlayer(){
+        try{
+            const result = await client.query(`SELECT * FROM players WHERE player_id = ${req.params.id}`)
+            if(result.row.length == 0){
+            res.setHeader('Content-Type', 'text/plain');
+            res.statusCode = 404;
+            res.end('Not Found');
+        }
+        res.send(result.row)
+        } catch (e){
+        console.log(e.stack);
+    }
+    }
+    getPlayer();
+});
 
 
 
