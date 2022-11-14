@@ -16,11 +16,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//TEST TO SEE IF ITS RUNNING CORRECTLY
 app.get('/test', (req, res)=>{
     res.send('Its working!')
 })
 
-app.get('/', (req, res)=> {
+//GET ALL PLAYERS
+app.get('/players', (req, res)=> {
     client.query(`SELECT * FROM players`)
     .then(result =>{
         res.send(result.rows)
@@ -30,7 +32,8 @@ app.get('/', (req, res)=> {
     })
 });
 
-app.get('/:id', (req, res)=> {
+//GET A SPECIFIC PLAYER BY ID
+app.get('players/:id', (req, res)=> {
     async function getPlayer(){
         try{
             const result = await client.query(`SELECT * FROM players WHERE player_id = ${req.params.id}`)
@@ -47,7 +50,68 @@ app.get('/:id', (req, res)=> {
     getPlayer();
 });
 
+//HIRE A NEW PLAYER
+app.post('/players', (req, res)=>{
+    let newPlayer = (req.body);
+    let full_name = newPlayer.full_name;
+    let jersey_num = newPlayer.jersey_num;
+    let position = newPlayer.position;
+    let height = newPlayer.height;
+    let weight = newPlayer. weight;
+    let experience = newPlayer.experience;
+    let college = newPlayer.college;
+    client.query(`INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) 
+    VALUES('${full_name}', ${jersey_num}, '${position}', ${height}, ${weight}, '${experience}', '${college}') RETURNING *`)
+    .then(result => {
+        res.status(201).send(result.rows);
+    })
+    .catch(e=>{
+        console.error(e.stack);
+    })
 
+})
+//ADD A PLAYER
+app.patch('/players/:id', (req, res)=>{
+    let newPlayer = (req.body);
+    let full_name = newPlayer.full_name || '';
+    let jersey_num = newPlayer.jersey_num || -1;
+    let position = newPlayer.position || '';
+    let height = newPlayer.height || -1;
+    let weight = newPlayer. weight || -1;
+    let experience = newPlayer.experience || '';
+    let college = newPlayer.college || '';
+    async function fixingPlayer(){
+        try{
+            const resutl = await client.query(`UPDATE players SET 
+            full_name = COALESCE(NULLIF('${full_name}', ''), full_name), 
+            jersey_num = COALESCE(NULLIF(${jersey_num}, -1), jersey_num), 
+            position = COALESCE(NULLIF('${position}', ''), position), 
+            height = COALESCE(NULLIF('${height}', -1), height), 
+            weight = COALESCE(NULLIF(${weight}, -1), weight), 
+            experience = COALESCE(NULLIF('${experience}', ''), experience), 
+            college = COALESCE(NULLIF('${college}', ''), college)
+            WHERE player_id = ${req.params.id} RETURNING *`)
+            res.send(result.rows);
+        }catch(e){
+            console.error(e.stack);
+        }
+
+    }
+    fixingPlayer();
+})
+
+//FIRE A PLAYER
+app.delete('/players/:id', (req, res) => {
+    async function firePlayer(){
+        try{
+            const result = await client.query(`DELETE FROM players WHERE player_id = ${req.params.id}`)
+            res.send(result.rows);
+        } catch (e){
+            console.error(e.stack)
+        }
+    }
+    firePlayer();
+})
 
 
 
