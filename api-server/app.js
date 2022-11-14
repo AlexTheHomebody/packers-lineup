@@ -42,7 +42,7 @@ app.get('players/:id', (req, res)=> {
             res.statusCode = 404;
             res.end('Not Found');
         }
-        res.send(result.row)
+        res.send(result.rows)
         } catch (e){
         console.log(e.stack);
     }

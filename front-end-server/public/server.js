@@ -5,7 +5,7 @@ const submitButton = document.getElementById('text-button');
 const base_url = 'https://packers-api.onrender.com/'
 
 
-fetch(base_url)
+fetch(base_url +'players')
 .then(response => response.json())
 .then(players => {
     players.forEach(player => {
@@ -52,6 +52,14 @@ fetch(base_url)
             { method: 'DELETE' })
             .then(playerCard.remove())
         })
+
+        // editPlayer.addEventListener('click', function(){
+        //     console.log(player.weight);
+        //     fetch(base_url + 'players/' + player.player_id,
+        //     { method: 'PATCH',
+        //     body: JSON.stringify({completed: true})})
+        //     .then(response =>)
+        // })
     });
 })
 
