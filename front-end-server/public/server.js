@@ -12,8 +12,12 @@ fetch(base_url)
         const playerCard = document.createElement('span');
         const deletePlayer = document.createElement('button');
         const editPlayer = document.createElement('button');
+        editPlayer.innerText = 'Edit';
+        deletePlayer.innerText = 'Delete';
         const playerInfo = document.createElement('div');
+        playerInfo.classList.add('info');
         const playerName = document.createElement('h2');
+        playerName.classList.add('full-name');
         const playerJN = document.createElement('ul');
         const playerPosition = document.createElement('ul');
         const playerHeight = document.createElement('ul');
@@ -28,8 +32,6 @@ fetch(base_url)
         playerWeight.innerText = 'Weight: ' + player.weight + 'lbs';
         playerExperience.innerText = 'Experience: ' + player.experience;
         playerCollege.innerText = 'College: ' + player.college;
-        editPlayer.innerText = 'Edit';
-        deletePlayer.innerText = 'Delete';
         
         playerCard.append(playerName);
         playerCard.append(playerInfo);
@@ -43,8 +45,6 @@ fetch(base_url)
         playerCard.append(editPlayer);
         playersList.append(playerCard);
         playerCard.classList.add('card');
-        playerName.classList.add('full-name');
-        playerInfo.classList.add('info');
         
         deletePlayer.addEventListener('click', function(){
             console.log(player.player_id);
@@ -52,11 +52,6 @@ fetch(base_url)
             { method: 'DELETE' })
             .then(playerCard.remove())
         })
-
-        // editPlayer.addEventListener('click', function(){
-        //     console.log(player.weight);
-        // })
-
     });
 })
 
