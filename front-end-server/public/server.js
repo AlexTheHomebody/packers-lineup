@@ -122,7 +122,7 @@ newPlayer.addEventListener('click', function(){
             college: newCollege})
     }
     console.log(requestPost);
-    fetch(base_url +'/players', requestPost)
+    fetch(base_url +'players', requestPost)
     .then(response => response.json())
     .then(data =>{
         console.log(data);
