@@ -5,8 +5,8 @@ const submitButton = document.getElementById('text-button');
 
 
 
-// const base_url = 'https://packers-api.onrender.com/'
-const base_url = 'http://localhost:9999/'
+const base_url = 'https://packers-api.onrender.com/'
+// const base_url = 'http://localhost:9999/'
 
 
 fetch(base_url +'players')
