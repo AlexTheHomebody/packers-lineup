@@ -16,7 +16,7 @@ body{
 .card{
     border: 20px solid rgb(255,215,0);
     width: 250px;
-    height: 280px;
+    height: 325px;
     background-color: white;
     margin: auto;
     margin-top: 30px;
@@ -36,4 +36,22 @@ body{
 }
 .info{
     font-size: large;
+}
+.text{
+    width: 60px;
+}
+#card{
+    border: 20px solid rgb(255,215,0);
+    width: 250px;
+    height: 325px;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 40px;
+    padding: 20px;  
+}
+#full-name{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
 }

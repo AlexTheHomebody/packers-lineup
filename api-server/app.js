@@ -23,6 +23,7 @@ app.get('/test', (req, res)=>{
 
 //GET ALL PLAYERS
 app.get('/players', (req, res)=> {
+    
     client.query(`SELECT * FROM players`)
     .then(result =>{
         res.send(result.rows)
@@ -72,6 +73,7 @@ app.post('/players', (req, res)=>{
 })
 //ADD A PLAYER
 app.patch('/players/:id', (req, res)=>{
+    console.log('editing')
     let newPlayer = (req.body);
     let full_name = newPlayer.full_name || '';
     let jersey_num = newPlayer.jersey_num || -1;
