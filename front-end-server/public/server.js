@@ -12,7 +12,7 @@ const base_url = 'https://packers-api.onrender.com/'
 
 function createCards(){
     const playersList = document.getElementById('results');
-    fetch(base_url +'/players')
+    fetch(base_url +'players')
     .then(response => response.json())
     .then(players => {
         players.forEach(player => {
@@ -66,7 +66,7 @@ function createCards(){
             console.log(player.weight);
             var textValue = document.getElementsByClassName('weightText')[0].value
             console.log(textValue)
-            fetch(base_url + '/players/' + player.player_id,{
+            fetch(base_url + 'players/' + player.player_id,{
                 method: 'PATCH',
                 body: JSON.stringify({
                     weight: textValue,
@@ -82,7 +82,7 @@ function createCards(){
     //fire player
         deletePlayer.addEventListener('click', function(){
             console.log(player.player_id);
-            fetch(base_url + '/players/' + player.player_id,
+            fetch(base_url + 'players/' + player.player_id,
             { method: 'DELETE' })
             .then(playerCard.remove())
         })
