@@ -48,7 +48,7 @@ INSERT INTO players(full_name, jersey_num, position, height, weight, experience,
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Pat O`Donnell', 16, 'P', 76, 220, '9', 'Miami');
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Jarran Reed', 90, 'DE', 75, 306, '7', 'Alabama');
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Sean Rhyan', 75, 'OT', 77, 320, 'R', 'UCLA');
-INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Aaron Rodgers', 12, 'OT', 74, 225, '18', 'California');
+INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Aaron Rodgers', 12, 'QB', 74, 225, '18', 'California');
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Amari Rodgers', 8, 'WR', 69, 212, '2', 'Clemson');
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Jon Runyan', 76, 'G', 76, 307, '3', 'Michigan');
 INSERT INTO players(full_name, jersey_num, position, height, weight, experience, college) VALUES('Darnell Savage', 26, 'SAF', 71, 198, '4', 'Maryland');

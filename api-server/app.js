@@ -24,7 +24,7 @@ app.get('/test', (req, res)=>{
 //GET ALL PLAYERS
 app.get('/players', (req, res)=> {
     
-    client.query(`SELECT * FROM players`)
+    client.query(`SELECT * FROM players ORDER BY full_name ASC`)
     .then(result =>{
         res.send(result.rows)
     })
@@ -53,6 +53,8 @@ app.get('players/:id', (req, res)=> {
 
 //HIRE A NEW PLAYER
 app.post('/players', (req, res)=>{
+    console.log('new')
+    console.log(req.body);
     let newPlayer = (req.body);
     let full_name = newPlayer.full_name;
     let jersey_num = newPlayer.jersey_num;

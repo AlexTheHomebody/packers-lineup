@@ -27,8 +27,13 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-
 }
+#stay{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+}
+
 .full-name{
     text-align: center;
     font-weight: bold;
