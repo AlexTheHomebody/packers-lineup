@@ -2,13 +2,8 @@ const main = document.getElementById('main');
 const submitButton = document.getElementById('text-button');
 const newPlayer = document.getElementById('hire');
 
-
-
-
-
-
 const base_url = 'https://packers-api.onrender.com/'
-// const base_url = 'http://localhost:9999'
+// const base_url = 'http://localhost:9999/'
 
 function createCards(){
     const playersList = document.getElementById('results');
@@ -61,9 +56,7 @@ function createCards(){
             playerInfo.classList.add('info');
             editPlayerBox.classList.add('weightText');
 
-
         editPlayer.addEventListener('click', function(){
-            console.log(player.weight);
             var textValue = document.getElementsByClassName('weightText')[0].value
             console.log(textValue)
             fetch(base_url + 'players/' + player.player_id,{
@@ -81,7 +74,6 @@ function createCards(){
 
     //fire player
         deletePlayer.addEventListener('click', function(){
-            console.log(player.player_id);
             fetch(base_url + 'players/' + player.player_id,
             { method: 'DELETE' })
             .then(playerCard.remove())
@@ -125,7 +117,6 @@ newPlayer.addEventListener('click', function(){
     fetch(base_url +'players', requestPost)
     .then(response => response.json())
     .then(data =>{
-        console.log(data);
         createNewCard();
     })
 })
